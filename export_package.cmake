@@ -66,4 +66,9 @@ function(export_package package)
   install(EXPORT ${package} DESTINATION ${CMAKECONFIG_INSTALL_DIR})
   set("${PACKAGE}_DIR" "${CMAKE_CURRENT_BINARY_DIR}" CACHE PATH
     "Path to ${package} configuration.")
+
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${package}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${package}ConfigVersion.cmake"
+    DESTINATION ${CMAKECONFIG_INSTALL_DIR} )
 endfunction()
