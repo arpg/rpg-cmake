@@ -1,5 +1,6 @@
 include(CMakeParseArguments)
 include(FindGTest)
+include(link_android)
 
 function(def_test test)
 
@@ -54,5 +55,9 @@ function(def_test test)
       gtest gtest_main
       ${test_DEPENDS}
       ${test_LINK_LIBS})
+
+    if(ANDROID)
+      link_android(${test})
+    endif()
   endif()
 endfunction()
