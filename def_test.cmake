@@ -51,7 +51,7 @@ function(def_test test)
     set_target_properties(${test} PROPERTIES
       COMPILE_FLAGS "${CMAKE_CXX_FLAGS_DEBUG}")
 
-    target_link_libraries(${test}
+    target_link_libraries(${test} PRIVATE
       gtest gtest_main
       ${test_DEPENDS}
       ${test_LINK_LIBS})

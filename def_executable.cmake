@@ -60,11 +60,11 @@ function(def_executable exec)
     endif()
 
     if(exec_DEPENDS)
-      target_link_libraries(${exec} ${exec_DEPENDS})
+      target_link_libraries(${exec} PRIVATE ${exec_DEPENDS})
     endif()
 
     if(exec_LINK_LIBS)
-      target_link_libraries(${exec} ${exec_LINK_LIBS})
+      target_link_libraries(${exec} PRIVATE ${exec_LINK_LIBS})
     endif()
 
     if(ANDROID)
