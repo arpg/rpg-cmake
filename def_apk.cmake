@@ -91,8 +91,15 @@ function(def_apk apk)
 	get_filename_component(module_name ${lib} NAME_WE)
 	get_filename_component(lib_path ${lib} REALPATH)
 	mk_append("LOCAL_MODULE  := ${module_name}")
+
 	mk_append("LOCAL_SRC_FILES := ${lib_path}")
-	mk_append("include $(PREBUILT_SHARED_LIBRARY)\n")
+	string(REGEX MATCH ".*\\.a" is_static ${lib_path})
+	if(is_static)
+	  mk_append("include $(PREBUILT_STATIC_LIBRARY)\n")
+	else()
+	  mk_append("include $(PREBUILT_SHARED_LIBRARY)\n")
+	endif()
+
       endforeach()
 
       clear_vars()
