@@ -4,22 +4,9 @@
 # GLUES_LIBRARIES
 # GLUES_FOUND
 
-FIND_PATH( GLUES_INCLUDE_DIR glues/glues.h
-  /usr/include
-  /usr/local/include
-  /opt/include
-  /opt/local/include
-  ${CMAKE_INSTALL_PREFIX}/include
-)
+find_path(GLUES_INCLUDE_DIR glues/glues.h)
 
-FIND_LIBRARY( GLUES_LIBRARY glues
-  /usr/lib64
-  /usr/lib
-  /usr/local/lib
-  /opt/local/lib
-  /opt/local/lib64
-  ${CMAKE_INSTALL_PREFIX}/lib
-)
+find_library(GLUES_LIBRARY glues)
 
 IF(GLUES_INCLUDE_DIR AND GLUES_LIBRARY)
   SET( GLUES_FOUND TRUE )
